@@ -31,16 +31,17 @@ The red channel of the resized RGB image is extracted to segment the optic disc,
 
 ## Segmentation
 The segmentation of the fundus image consists of four segments- optic disc, microaneurysm, blood vessels.
-# Optic Disc:
+
+### Optic Disc:
 After extracting the red channel and applying the CLAHE, we apply binary thresholding(choosing an appropriate local threshold). We apply thresholding and after that we set all the pixel values above 245 to 255(white) and the pixel value below 245 to 0(black). We obtain a binary image after thresholding and to this we apply morphological opening on the binary image and then morphological closing. Next step is contouring the closed optic disc which are the boundaries of connected regions. Since the optic disc is the largest area we sort the contour area from largest to smallest. The largest contour is drawn on this mask and it is filled to obtain the optic disc
 
-# Microaneurysm:
+### Microaneurysm:
 Microaneurysm are tiny dots in a retina that are very hard to segment. The process that we have employed here is to segment the image using thresholding and morphological operations. Initially after the extraction of the green channel and applying CLAHE, adjust gamma is applied which allows contrast enhancement by mapping the pixel values to the corrected gamma values and then applies the transformation using the LUT function of cv2. After this thresholding and morphological operations such as tophat and opening are applied.The resulting binary mask highlights the region of interest.
 
-# Blood vessels:
+### Blood vessels:
 The process of segmentation of blood vessels initially starts with the green channel and applying CLAHE to enhance the blood vessels. Subsequently various operations such as median, filtering, subtraction of the original image and the green channel enhanced image followed by blurring,thresholding(by choosing an appropriate local threshold), morphological operation-opening and then the exact operations are performed with slight variations in the parameters. Both these images are then combined using the bitwise OR operator. The result is a binary image with highlighted blood vessels 
 
-# Exudates
+### Exudates
 Exudates are typically the bright lesions in a fundus image. The process of extraction of these exudates initially starts with the conversion of the image to gray scale and then the average pixel intensity of the entire image is calculated. Based on the average pixel intensity thresholding is applied to segment the exudates. After thresholding, the centroid of the white pixels are calculated that of the white pixels. Then further using these centroid values we remove pixels i.e., if the centroid y-coordinate is less than 1000 then the pixels near the top are removed and similarly if the centroid’s x-coordinate is greater than 2200 or zero then pixels near the right
 side are removed or otherwise pixels to the left are removed
 
