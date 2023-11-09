@@ -51,6 +51,9 @@ In DR detection this involvesarea of optic disc, ratio of microaneurysm, length
 ## Classification:
 The next step after the feature extraction is to use the necessary features to classify the fundus images into whether a person has Diabetic Retinopathy or not. The model used for the binary classification is Random Forest after it gave the highest accuracy compared to KNN Classifier, Logistic Regression, SVM and Gradient Boosting. The features used for model training are ratio of microaneurysm, blood vessel length, blood vessel tortuosity and mean intensity. The other features were not considered due the fact that the features reduced the accuracy of the model.
 
+## Deployement:
+The Diabetic Retinopathy Detection app is deployed using streamlit.
+
 ## Results:
 The final result is segmented fundus region along with the classification of fundus as Diabetic Retinopathy or not.
 
